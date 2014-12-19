@@ -38,6 +38,7 @@ class HomeController extends BaseController {
 			$schools[] = $school;
 		}
 
+		// Return the list of schools
 		return View::make('schools')->withSchools($schools);
 	}
 
