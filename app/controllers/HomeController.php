@@ -15,9 +15,35 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function showWelcome()
+	public function index()
 	{
-		return View::make('hello');
+		return View::make('home');
+	}
+
+	public function schools()
+	{
+		$curl = curl_init('http://nine.eng.utah.edu/schools');
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+		$result = curl_exec($curl);
+		curl_close($curl);
+
+		$schools = array();
+
+		foreach(json_decode($result) as $data)
+		{
+			$school = array();
+			$school['name'] = $data->name;
+			$school['abbreviation'] = $data->abbreviation;
+			$schools[] = $school;
+		}
+
+		return View::make('schools')->withSchools($schools);
+	}
+
+	public function queues()
+	{
+		return View::make('queues');
 	}
 
 }

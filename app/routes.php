@@ -11,7 +11,12 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', array(
+	'as'	=>	'root',
+	'uses'	=>	'HomeController@index'
+));
+
+Route::get('/schools', array(
+	'as'	=>	'schools',
+	'uses'	=>	'HomeController@schools'
+));
