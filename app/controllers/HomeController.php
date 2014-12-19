@@ -35,6 +35,23 @@ class HomeController extends BaseController {
 			$school = array();
 			$school['name'] = $data->name;
 			$school['abbreviation'] = $data->abbreviation;
+
+			$queues = array();
+
+			foreach($data->instructors as $prof)
+			{
+				foreach($prof->queues as $queue)
+				{
+					$q = array();
+					$q['class_number'] = $queue->class_number;
+					$q['professor'] = $prof->name;
+					$q['prof_name'] = $prof->username;
+					$queues[] = $q;
+				}
+			}
+
+			$school['queues'] = $queues;
+
 			$schools[] = $school;
 		}
 
@@ -44,7 +61,20 @@ class HomeController extends BaseController {
 
 	public function queues()
 	{
-		return View::make('queues');
+		$class_numbers = Input::get('class_numbers');
+		$professors = Input::get('professors');
+		$urls = Input::get('urls');
+
+		$q_count = 0;
+		foreach($class_numbers as $num)
+			$q_count++;
+
+		return View::make('queues')->with([
+			'q_count'		=>	$q_count,
+			'class_numbers'	=>	$class_numbers,
+			'professors'	=>	$professors,
+			'urls'			=>	$urls
+		]);
 	}
 
 }

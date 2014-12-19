@@ -42,8 +42,11 @@ img#logo {
 	width: 100%;
 }
 
-.school-list button {
+.school-list a {
+	color: #363636;
+	background-color: #E0E0E0;
 	width: 90%;
+	max-width: 400px;
 	box-shadow: 2px 2px 5px #363636, -0.4px -0.4px 0.4px #363636, 0.4px -0.4px 0.4px #363636, -0.4px 0.4px 0.4px #363636;
 }
 
@@ -70,13 +73,24 @@ img#logo {
 
 .q-name {
 	display: inline-block;
-	width: 65%;
+	width: 85%;
 	text-align: left;
-	font-size: 12pt;
+	font-size: 10pt;
+	margin-top: 5px;
 }
 
 .q-actions {
 	display: inline-block;
-	width: 33%;
+	width: 12%;
 	text-align: right;
+	font-size: 10pt;
+}
+
+.q-actions button {
+	margin-bottom: 10px;
+	color: white;
+	background-color: #00B85C;
+	border-color: #008140;
+	box-shadow: 1px 1px 2px #363636;
+	text-shadow: 1px 1px 1px #363636;
 }

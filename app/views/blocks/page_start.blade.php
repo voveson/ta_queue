@@ -17,6 +17,7 @@
     <!-- Load scripts -->
     <script src="{{ URL::asset('assets/js/jquery-2.1.1.min.js') }}"></script>
     <script src="{{ URL::asset('assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/main.js') }}"></script>
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

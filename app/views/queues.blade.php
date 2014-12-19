@@ -4,7 +4,7 @@
 
 	<h1>Add a Queue</h1>
 	<div class="q-list">
-		@for($i=0; $i<10; $i++)
+		@for($i=0; $i<$q_count; $i++)
 			@include('blocks/q-listing')
 		@endfor
 	</div>

@@ -20,3 +20,8 @@ Route::get('/schools', array(
 	'as'	=>	'schools',
 	'uses'	=>	'HomeController@schools'
 ));
+
+Route::post('/q-list', array(
+	'as'	=>	'q_list',
+	'uses'	=>	'HomeController@queues'
+));
