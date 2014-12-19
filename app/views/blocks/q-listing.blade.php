@@ -4,9 +4,14 @@
 		<b>Prof.:</b>&nbsp;&nbsp;{{ $professors[$i] }}
 	</div>
 	<div class="q-actions">
-		<button class="btn btn-default btn-sm">
-			{{ FA::icon('plus') }}
-		</button>
+		<form action="{{ URL::route('q-login') }}" method="POST">
+			<input type="hidden" name="q_name" value="{{ $class_numbers[$i] }}"/>
+			<input type="hidden" name="q_prof" value="{{ $professors[$i] }}"/>
+			<input type="hidden" name="q_url" value="{{ $urls[$i] }}"/>
+			<button class="btn btn-default btn-sm">
+				<b>GO</b>&nbsp;{{ FA::icon('chevron-right') }}
+			</button>
+		</form>
 	</div>
 </div>
 <hr>

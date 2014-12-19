@@ -25,3 +25,8 @@ Route::post('/q-list', array(
 	'as'	=>	'q_list',
 	'uses'	=>	'HomeController@queues'
 ));
+
+Route::post('/q-login', array(
+	'as'	=>	'q-login',
+	'uses'	=>	'HomeController@q_login'
+));

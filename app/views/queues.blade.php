@@ -2,7 +2,7 @@
 
 @section('content')
 
-	<h1>Add a Queue</h1>
+	<h1>Select a Queue</h1>
 	<div class="q-list">
 		@for($i=0; $i<$q_count; $i++)
 			@include('blocks/q-listing')

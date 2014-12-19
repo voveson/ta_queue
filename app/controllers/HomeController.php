@@ -77,4 +77,17 @@ class HomeController extends BaseController {
 		]);
 	}
 
+	public function q_login()
+	{
+		$name = Input::get('q_name');
+		$prof = Input::get('q_prof');
+		$url = Input::get('q_url');
+
+		return View::make('q-login')->with([
+			'q_name'	=>	$name,
+			'q_prof'	=>	$prof,
+			'q_url'		=>	$url
+		]);
+	}
+
 }
