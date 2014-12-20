@@ -94,3 +94,42 @@ img#logo {
 	box-shadow: 1px 1px 1px #363636;
 	text-shadow: 1px 1px 1px #363636;
 }
+
+#login-radios {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#login-radios span {
+	font-weight: bold;
+	font-size: 13pt;
+}
+
+label {
+	font-size: 12pt;
+}
+
+#login-container {
+	width: 80%;
+	max-width: 290px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#login-container .form-control {
+	font-size: 14pt;
+	height: 50px;
+}
+
+#student-form-container, #ta-form-container {
+	display: none;
+}
+
+#ta-form-container span {
+	font-size: 12pt;
+}
+
+button.btn-login {
+	width: 150px;
+	font-size: 14pt;
+}
