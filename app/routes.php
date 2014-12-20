@@ -30,3 +30,13 @@ Route::post('/q-login', array(
 	'as'	=>	'q-login',
 	'uses'	=>	'HomeController@q_login'
 ));
+
+Route::post('/student-queue', array(
+	'as'	=>	'student-queue',
+	'uses'	=>	'HomeController@show_student_queue'
+));
+
+Route::post('/ta-queue', array(
+	'as'	=>	'ta-queue',
+	'uses'	=>	'HomeController@show_ta_queue'
+));

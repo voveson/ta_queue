@@ -108,7 +108,7 @@ label {
 	font-size: 12pt;
 }
 
-#login-container {
+#login-container, #errors-container {
 	width: 80%;
 	max-width: 290px;
 	margin-left: auto;
