@@ -41,6 +41,10 @@ img#logo {
 	width: 100%;
 }
 
+.school-list {
+	margin-top: 40px;
+}
+
 .school-list a {
 	color: #363636;
 	background-color: #E0E0E0;
@@ -131,4 +135,50 @@ label {
 button.btn-login {
 	width: 150px;
 	font-size: 14pt;
+}
+
+#hidden-data {
+	display: none;
+}
+
+#q-students {
+	width: 90%;
+	background-color: black;
+	color: white;
+	border-radius: 7px;
+	height: 300px;
+	overflow-y: scroll;
+	box-shadow: 1px 1px 2px #363636;
+	text-align: left;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.q-student {
+	padding: 10px;
+}
+
+#q-students hr {
+	margin: 0;
+}
+
+#fixed-panel {
+	width: 90%;
+	margin-right: auto;
+	margin-left: auto;
+	font-size: 12pt;
+}
+
+#q-tas {
+	margin-top: 20px;
+	text-align: left;
+}
+
+#q-state {
+	margin-top: 20px;
+	text-align: left;	
+}
+
+#enter-exit {
+	margin-top: 20px;
 }

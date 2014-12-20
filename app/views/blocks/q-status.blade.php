@@ -1,0 +1,1 @@
+{{ (isset($queue->status) && $queue->status != "") ? $queue->status : '' }}

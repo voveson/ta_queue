@@ -33,10 +33,20 @@ Route::post('/q-login', array(
 
 Route::post('/student-queue', array(
 	'as'	=>	'student-queue',
-	'uses'	=>	'HomeController@show_student_queue'
+	'uses'	=>	'HomeController@student_queue'
 ));
 
 Route::post('/ta-queue', array(
 	'as'	=>	'ta-queue',
-	'uses'	=>	'HomeController@show_ta_queue'
+	'uses'	=>	'HomeController@ta_queue'
+));
+
+Route::get('/show-sq/{s_id}/{username}/{location}/{auth_key}/{q_name}', array(
+	'as'	=>	'show-sq',
+	'uses'	=>	'HomeController@show_student_q'
+));
+
+Route::get('/show-tq', array(
+	'as'	=>	'show-tq',
+	'uses'	=>	'HomeController@show_ta_q'
 ));

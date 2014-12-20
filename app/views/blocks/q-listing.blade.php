@@ -14,4 +14,6 @@
 		</form>
 	</div>
 </div>
+@if($i != ($q_count - 1))
 <hr>
+@endif

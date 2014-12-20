@@ -6,5 +6,5 @@
 		@yield('content')
 	</div>
 </div>
-@include('blocks/footer')
+{{-- @include('blocks/footer') --}}
 @include('blocks/page_end')

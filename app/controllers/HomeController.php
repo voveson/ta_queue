@@ -90,7 +90,7 @@ class HomeController extends BaseController {
 		]);
 	}
 
-	public function show_student_queue()
+	public function student_queue()
 	{
 		$url = Input::get('url');		
 		$base_url = Input::get('base_url');
@@ -120,11 +120,40 @@ class HomeController extends BaseController {
 				'student'		=>	true
 			]);
 		else
-			var_dump($result);
+		{
+			$auth_key = base64_encode($result->id . ':' . $result->token);
+			$username = $result->username;
+			$location = $result->location;
 
+			return Redirect::route('show-sq', [
+				's_id'		=>	$result->id,
+				'username'	=>	$username,
+				'location'	=>	$location,
+				'auth_key'	=>	$auth_key,
+				'q_name'	=>	$q_name
+			]);
+		}
 	}
 
-	public function show_ta_queue()
+	public function show_student_q($s_id, $username, $location, $auth_key, $q_name)
+	{
+		$queue = $this->get_q($auth_key);
+
+		return View::make('student-q')->with([
+			's_id'		=>	$s_id,
+			'username'	=>	$username,
+			'location'	=>	$location,
+			'auth_key'	=>	$auth_key,
+			'q_name'	=>	$q_name,
+			'queue'		=>	$queue
+		]);/*
+		echo $username;
+		echo $location;
+		echo $auth_key;
+		echo $q_name;*/
+	}
+
+	public function ta_queue()
 	{
 		$url = Input::get('url');
 		$base_url = Input::get('base_url');
@@ -171,6 +200,20 @@ class HomeController extends BaseController {
 		curl_close($curl);
 
 		return json_decode($result);
+	}
+
+	private function get_q($auth_key)
+	{
+		$curl = curl_init('http://nine.eng.utah.edu/queue');
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+			'Authorization: BASIC ' . $auth_key
+		));
+
+		$result = curl_exec($curl);
+		curl_close($curl);
+
+		return json_decode($result);	
 	}
 
 }

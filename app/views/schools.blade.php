@@ -18,20 +18,7 @@
 				<a href="#" class="btn btn-lg school_picker" data-form="#form-{{ $school['abbreviation'] }}">
 					{{ $school['name'] }}&nbsp;{{ FA::icon('chevron-right') }}
 				</a>
-			</p>{{--
-			<table>
-				<tr>
-					<th>Professor</th>
-					<th colspan="2">Course</th>
-				</tr>
-			@foreach($school['queues'] as $q)
-				<tr>
-					<td>{{ $q['professor'] }}</td>
-					<td>{{ $q['class_number'] }}</td>
-					<td><button class="btn btn-sm">{{ FA::icon('plus') }}</button></td>
-				</tr>
-			@endforeach
-			</table>--}}
+			</p>
 		@endforeach
 	</div>
 @stop
