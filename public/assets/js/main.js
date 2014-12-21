@@ -117,8 +117,8 @@ $(function() {
 
 	$('#q-students').on('click', '.ta-q-student', function(e) {
 		var id = $(this).attr('id');
-		Android.showDialog("Pick one!");
-		//alert('result');
+		var result = Android.showDialog("Pick one!");
+		alert('result');
 	});
 });
 
