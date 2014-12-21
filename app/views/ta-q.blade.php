@@ -4,7 +4,11 @@
 {{--
 <script src="{{ URL::asset('assets/js/sq.js') }}"></script>
 --}}
-
+<script>
+$(function(){
+	window.setInterval(poll, 10000);
+});	
+</script>
 
 {{ '<style>body{ background-color: ' . $color .'; }</style>' }}
 <div id="hidden-data" 

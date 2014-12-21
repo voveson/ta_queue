@@ -117,8 +117,6 @@ $(function() {
 		var id = $(this).attr('id');
 		alert(id);
 	});
-
-	window.setInterval(poll, 10000);
 });
 
 
