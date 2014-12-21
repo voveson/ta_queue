@@ -85,7 +85,7 @@ $(function() {
 			},
 			error: 		function(jqXHR, textStatus, errorThrown) {
 				var message = $.parseJSON(jqXHR.responseText);
-				alert(textStatus);
+				Android.showToast("Error: Could not sign out");
 				// TODO:  bootstrap error message
 			}
 		});
@@ -95,9 +95,6 @@ $(function() {
 		var url = $(this).attr('data-url');
 		var after = $(this).attr('data-after');
 
-		console.log("url: " + url);
-		console.log("after: " + after);
-		
 		$.ajax({
 			url:		url,
 			type: 		"POST",
@@ -107,7 +104,7 @@ $(function() {
 			},
 			error: 		function(jqXHR, textStatus, errorThrown) {
 				var message = $.parseJSON(jqXHR.responseText);
-				alert(textStatus);
+				Android.showToast("Error: Could not sign out");
 				// TODO:  bootstrap error message
 			}
 		});
