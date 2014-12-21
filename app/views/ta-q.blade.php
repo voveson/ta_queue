@@ -10,7 +10,7 @@ $(function(){
 });	
 </script>
 
-{{ '<style>body{ background-color: ' . $color .'; }</style>' }}
+{{ '<style>body, html{ background-color: ' . $color .'; }</style>' }}
 <div id="hidden-data" 
 	 data-username="{{ $username }}"
 	 data-key="{{ $auth_key }}"

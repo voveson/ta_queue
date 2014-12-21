@@ -9,6 +9,7 @@ $(function(){
 	window.setInterval(poll, 10000);
 });	
 </script>
+{{ '<style>body, html{ background-color: ' . $color .'; }</style>' }}
 
 <div id="hidden-data" 
 	 data-username="{{ $username }}" 

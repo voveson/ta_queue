@@ -104,6 +104,7 @@ $(function() {
 			dataType: 	'json',
 			success: 	function(data, textStatus, jqXHR) {
 				$('body').css('background-color', color);
+				$('html').css('background-color', color);
 				Android.showToast("Queue state updated");
 			},
 			error: 		function(jqXHR, textStatus, errorThrown) {

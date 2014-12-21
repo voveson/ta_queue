@@ -139,13 +139,21 @@ class HomeController extends BaseController {
 	{
 		$queue = $this->get_q($auth_key);
 
+		if($queue->active && $queue->frozen)
+			$color = '#00CCFF';
+		elseif($queue->active)
+			$color = "#B2B2B2";
+		else
+			$color = "#FF9999";
+
 		return View::make('student-q')->with([
 			's_id'		=>	$s_id,
 			'username'	=>	$username,
 			'location'	=>	$location,
 			'auth_key'	=>	$auth_key,
 			'q_name'	=>	$q_name,
-			'queue'		=>	$queue
+			'queue'		=>	$queue,
+			'color'		=>	$color
 		]);
 	}
 
