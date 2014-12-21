@@ -7,11 +7,10 @@
 
 
 {{ '<style>body{ background-color: ' . $color .'; }</style>' }}
-
-
 <div id="hidden-data" 
 	 data-username="{{ $username }}"
-	 data-key="{{ $auth_key }}">
+	 data-key="{{ $auth_key }}"
+	 data-poll="">
 </div>
 <h1>{{ $q_name }}</h1>
 

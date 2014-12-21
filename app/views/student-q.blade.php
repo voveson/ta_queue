@@ -4,10 +4,13 @@
 {{--
 <script src="{{ URL::asset('assets/js/sq.js') }}"></script>
 --}}
+
+
 <div id="hidden-data" 
 	 data-username="{{ $username }}" 
 	 data-location="{{ $location }}" 
-	 data-key="{{ $auth_key }}">
+	 data-key="{{ $auth_key }}"
+	 data-poll="">
 </div>
 <h1>{{ $q_name }}</h1>
 

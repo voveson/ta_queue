@@ -112,4 +112,17 @@ $(function() {
 			}
 		});
 	});
+
+	$('#q-students').on('click', '.ta-q-student', function(e) {
+		var id = $(this).attr('id');
+		alert(id);
+	});
+
+	window.setInterval(poll, 10000);
 });
+
+
+function poll()
+{
+	location.reload();
+}
