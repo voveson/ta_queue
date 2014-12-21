@@ -5,8 +5,9 @@
 <script src="{{ URL::asset('assets/js/sq.js') }}"></script>
 --}}
 <script>
+var polling;
 $(function(){
-	window.setInterval(poll, 10000);
+	polling = setInterval(function(){poll()}, 10000);
 });	
 </script>
 

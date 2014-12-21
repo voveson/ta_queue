@@ -25,7 +25,7 @@
 
 <div id="enter-exit">
 	<button id="ta-sign-out-q" class="btn btn-lg" 
-			data-url="{{ URL::route('sign-out', array($auth_key, $t_id)) }}"
+			data-url="{{ URL::route('sign-out', array($auth_key, 'tas', $t_id)) }}"
 			data-after="{{ URL::route('schools') }}">
 		Sign Out {{ FA::icon('sign-out') }}
 	</button>

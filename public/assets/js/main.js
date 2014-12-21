@@ -1,4 +1,21 @@
 $(function() {
+
+	var modal_top = $(window).height() / 2;
+	modal_top -= $('#ta-modal').height() / 2;
+	var modal_left = $(window).width() / 2;
+	modal_left -= $('#ta-modal').width() / 2;
+
+	$('#ta-modal').css('top', modal_top);
+	$('#ta-modal').css('left', modal_left);
+
+	$('#q-students').on('click', '.ta-q-student', function(e) {
+		var id = $(this).attr('id');
+		var name = $(this).attr('data-name');
+		$('#modal-student').text(name);
+		clearInterval(polling);
+		$("#ta-modal").modal('show');
+	});
+
 	$('.school_picker').click(function(e) {
 		e.preventDefault();
 		var form = $(this).attr('data-form');
@@ -63,6 +80,29 @@ $(function() {
 			url:		url,
 			type: 		"POST",
 			success: 	function(data, textStatus, jqXHR) {
+				Android.showToast("Signed out");
+				window.location.replace(after);
+			},
+			error: 		function(jqXHR, textStatus, errorThrown) {
+				var message = $.parseJSON(jqXHR.responseText);
+				alert(textStatus);
+				// TODO:  bootstrap error message
+			}
+		});
+	});
+
+	$('#ta-sign-out-q').click(function(e) {
+		var url = $(this).attr('data-url');
+		var after = $(this).attr('data-after');
+
+		console.log("url: " + url);
+		console.log("after: " + after);
+		
+		$.ajax({
+			url:		url,
+			type: 		"POST",
+			success: 	function(data, textStatus, jqXHR) {
+				Android.showToast("Signed out");
 				window.location.replace(after);
 			},
 			error: 		function(jqXHR, textStatus, errorThrown) {
@@ -113,11 +153,6 @@ $(function() {
 				// TODO:  bootstrap error message
 			}
 		});
-	});
-
-	$('#q-students').on('click', '.ta-q-student', function(e) {
-		var id = $(this).attr('id');
-		//Android.showDialog("Pick one!");
 	});
 });
 

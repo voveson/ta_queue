@@ -183,12 +183,12 @@ class HomeController extends BaseController {
 			]);	
 	}
 
-	public function q_sign_out($auth_key, $s_id)
+	public function q_sign_out($auth_key, $url, $id)
 	{
-		$result = $this->sign_out($auth_key, $s_id);
+		$result = $this->sign_out($auth_key, $url, $id);
 		
 		if(isset($result->errors))
-			return Response::json(['api_errors' => $queue->errors], 401);
+			return Response::json(['api_errors' => $result->errors], 401);
 		else
 			return Response::json(['success' => 'Signed out successfully'], 204);
 	}
@@ -358,9 +358,9 @@ class HomeController extends BaseController {
 		return json_decode($result);		
 	}
 
-	private function sign_out($auth_key, $s_id)
+	private function sign_out($auth_key, $url, $id)
 	{
-		$curl = curl_init('http://nine.eng.utah.edu/students/' . $s_id);
+		$curl = curl_init('http://nine.eng.utah.edu/' . $url . '/' . $id);
 		curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($curl, CURLOPT_HTTPHEADER, array(

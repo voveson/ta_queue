@@ -1,5 +1,6 @@
 @include('blocks/page_start')
 @include('blocks/header')
+@include('blocks/ta-modal')
 
 <div class="content-wrapper">
 	<div id="page_content" class="container">

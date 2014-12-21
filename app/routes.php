@@ -61,7 +61,7 @@ Route::post('/exit-q/{auth_key}/{s_id}', array(
 	'uses'	=>	'HomeController@exit_q'
 ));
 
-Route::post('/sign-out/{auth_key}/{s_id}', array(
+Route::post('/sign-out/{auth_key}/{url}/{s_id}', array(
 	'as'	=>	'sign-out',
 	'uses'	=>	'HomeController@q_sign_out'
 ));
