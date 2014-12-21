@@ -16,6 +16,10 @@ $(function() {
 		$("#ta-modal").modal('show');
 	});
 
+	$('#modal-cancel').click(function(){
+		polling = setInterval(function(){poll()}, 10000);
+	});
+
 	$('.school_picker').click(function(e) {
 		e.preventDefault();
 		var form = $(this).attr('data-form');

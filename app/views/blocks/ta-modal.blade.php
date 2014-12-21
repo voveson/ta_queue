@@ -12,7 +12,7 @@
     <div class="modal-buttons">
       <button class="btn btn-sm" id="create-schedule">Help<br>Student</button>
       <button class="btn btn-sm" id="create-schedule">Remove<br>Student</button>
-      <button class="btn btn-sm" id="cancel-create" data-dismiss="modal">Cancel</button>
+      <button class="btn btn-sm" id="modal-cancel" data-dismiss="modal">Cancel</button>
     </div>
   </div>
 </div>
