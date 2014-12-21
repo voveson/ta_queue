@@ -72,4 +72,44 @@ $(function() {
 			}
 		});
 	});
+
+	$('#q-state-select').change(function(e) {
+		var value = $(this).val();
+		var frozen = $(this).attr('data-frozen');
+		var active = $(this).attr('data-active');
+		var url = $(this).attr('data-url');
+		var data;
+		var color = '';
+
+		if (value == 1)
+		{
+			data = { active:'1', frozen:'0', operation:'activate' };
+			color = '#B2B2B2';
+		}
+		else if(value == 2)
+		{
+			data = { active:'0', operation:'activate' };
+			color = '#FF9999';
+		}
+		else
+		{
+			data = { frozen:'1', operation:'freeze' };
+			color = '#00CCFF';
+		}
+
+		$.ajax({
+			url:		url,
+			type: 		"POST",
+			data: 		data, 
+			dataType: 	'json',
+			success: 	function(data, textStatus, jqXHR) {
+				$('body').css('background-color', color);
+			},
+			error: 		function(jqXHR, textStatus, errorThrown) {
+				//var message = $.parseJSON(jqXHR.responseText);
+				alert('Could not change state at this time.');
+				// TODO:  bootstrap error message
+			}
+		});
+	});
 });

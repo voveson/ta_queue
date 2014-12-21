@@ -146,11 +146,7 @@ class HomeController extends BaseController {
 			'auth_key'	=>	$auth_key,
 			'q_name'	=>	$q_name,
 			'queue'		=>	$queue
-		]);/*
-		echo $username;
-		echo $location;
-		echo $auth_key;
-		echo $q_name;*/
+		]);
 	}
 
 	public function enter_q($auth_key, $s_id)
@@ -218,7 +214,95 @@ class HomeController extends BaseController {
 				'ta'			=>	true
 			]);
 		else
-			var_dump($result);
+		{
+			$auth_key = base64_encode($result->id . ':' . $result->token);
+			$username = $result->username;
+
+			return Redirect::route('show-tq', [
+				't_id'		=>	$result->id,
+				'username'	=>	$username,
+				'auth_key'	=>	$auth_key,
+				'q_name'	=>	$q_name
+			]);
+		}
+	}
+
+	public function show_ta_q($t_id, $username, $auth_key, $q_name)
+	{
+		$queue = $this->get_q($auth_key);
+		$color = '';
+
+		if($queue->active && $queue->frozen)
+			$color = '#00CCFF';
+		elseif($queue->active)
+			$color = "#B2B2B2";
+		else
+			$color = "#FF9999";
+
+		return View::make('ta-q')->with([
+			't_id'		=>	$t_id,
+			'username'	=>	$username,
+			'auth_key'	=>	$auth_key,
+			'q_name'	=>	$q_name,
+			'queue'		=>	$queue,
+			'color'		=>	$color
+		]);
+	}
+
+	public function change_state($auth_key)
+	{
+		$op = Input::get('operation');
+		$queue = new stdClass();
+
+		$color = '';
+
+		if($op == "activate")
+		{
+			$active = Input::get('active');
+			if($active)
+			{
+				$queue->frozen = 'false';
+				$color = '#B2B2B2';
+			}
+			else
+				$color = '#FF9999';
+
+			$queue->active = $active ? 'true' : 'false';
+		}
+		elseif($op == "freeze")
+		{
+			$frozen = Input::get('frozen');
+			if($frozen)
+			{
+				$queue->active = 'true';
+				$color = '#00CCFF';
+			}
+			else
+				$color = '#B2B2B2';
+
+			$queue->frozen = $frozen ? 'true' : 'false';
+		}		
+
+		$data = new stdClass();
+		$data->queue = $queue;
+
+		$data = json_encode($data);
+
+		$curl = curl_init('http://nine.eng.utah.edu/queue');
+		curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
+		curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($curl, CURLOPT_HTTPHEADER, array(                                                                          
+    		'Content-Type: application/json',                                                                                
+    		'Content-Length: ' . strlen($data),
+    		'Authorization: BASIC ' . $auth_key                                                                       
+		));
+
+		$result = curl_exec($curl);
+		curl_close($curl);
+		$reply = json_decode($result);
+
+		return Response::json(['color' => $color], 204);
 	}
 
 	private function login($data, $url)

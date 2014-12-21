@@ -46,7 +46,7 @@ Route::get('/show-sq/{s_id}/{username}/{location}/{auth_key}/{q_name}', array(
 	'uses'	=>	'HomeController@show_student_q'
 ));
 
-Route::get('/show-tq', array(
+Route::get('/show-tq/{t_id}/{username}/{auth_key}/{q_name}', array(
 	'as'	=>	'show-tq',
 	'uses'	=>	'HomeController@show_ta_q'
 ));
@@ -64,4 +64,9 @@ Route::post('/exit-q/{auth_key}/{s_id}', array(
 Route::post('/sign-out/{auth_key}/{s_id}', array(
 	'as'	=>	'sign-out',
 	'uses'	=>	'HomeController@q_sign_out'
+));
+
+Route::post('/q-state-change/{auth_key}', array(
+	'as'	=>	'q-state-change',
+	'uses'	=>	'HomeController@change_state'
 ));

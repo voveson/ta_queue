@@ -154,7 +154,7 @@ button.btn-login {
 	margin-left: auto;
 }
 
-.q-student {
+.q-student, .ta-q-student {
 	padding: 10px;
 }
 
@@ -179,6 +179,14 @@ button.btn-login {
 	text-align: left;	
 }
 
+#q-state .form-control {
+	display: inline-block;
+	width: 50%;
+}
 #enter-exit {
 	margin-top: 20px;
+}
+
+#ta-sign-out-q {
+	width: 70%;
 }
