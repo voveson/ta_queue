@@ -50,3 +50,13 @@ Route::get('/show-tq', array(
 	'as'	=>	'show-tq',
 	'uses'	=>	'HomeController@show_ta_q'
 ));
+
+Route::post('/enter-q/{auth_key}/{s_id}', array(
+	'as'	=>	'enter_q',
+	'uses'	=>	'HomeController@enter_q'
+));
+
+Route::post('/exit-q/{auth_key}/{s_id}', array(
+	'as'	=>	'exit_q',
+	'uses'	=>	'HomeController@exit_q'
+));

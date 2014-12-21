@@ -1,10 +1,14 @@
 @extends('layouts.main')
 
 @section('content')
-
+{{--
 <script src="{{ URL::asset('assets/js/sq.js') }}"></script>
-
-<div id="hidden-data" data-username="{{ $username }}" data-location="{{ $location }}" data-key="{{ $auth_key }}"></div>
+--}}
+<div id="hidden-data" 
+	 data-username="{{ $username }}" 
+	 data-location="{{ $location }}" 
+	 data-key="{{ $auth_key }}">
+</div>
 <h1>{{ $q_name }}</h1>
 
 <div id="q-status">

@@ -19,10 +19,11 @@
 </div>
 
 <div id="enter-exit">
-	<button id="enter-q" class="btn btn-md" {{ (!$queue->active || $queue->frozen) ? "disabled" : "" }}>
+	<button id="enter-q" class="btn btn-md" data-url="{{ URL::route('enter_q', array($auth_key, $s_id)) }}" 
+			{{ (!$queue->active || $queue->frozen) ? "disabled" : "" }}>
 		Enter Queue
 	</button>
-	<button id="exit-q" class="btn btn-md">
+	<button id="exit-q" class="btn btn-md" data-url="{{ URL::route('exit_q', array($auth_key, $s_id)) }}">
 		Exit Queue
 	</button>
 	<button id="sign-out-q" class="btn btn-md">

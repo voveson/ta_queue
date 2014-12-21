@@ -153,6 +153,32 @@ class HomeController extends BaseController {
 		echo $q_name;*/
 	}
 
+	public function enter_q($auth_key, $s_id)
+	{
+		$queue = $this->enter_exit($auth_key, 'enter_queue');		
+
+		if(isset($queue->errors))
+			return Response::json(['api_errors' => $queue->errors], 401);
+		else
+			return View::make('blocks.dynamic-students-panel')->with([
+				'q'		=>	$queue,
+				's_id'	=>	$s_id
+			]);
+	}
+
+	public function exit_q($auth_key, $s_id)
+	{
+		$queue = $this->enter_exit($auth_key, 'exit_queue');		
+
+		if(isset($queue->errors))
+			return Response::json(['api_errors' => $queue->errors], 401);
+		else
+			return View::make('blocks.dynamic-students-panel')->with([
+				'q'		=>	$queue,
+				's_id'	=>	$s_id
+			]);	
+	}
+
 	public function ta_queue()
 	{
 		$url = Input::get('url');
@@ -214,6 +240,20 @@ class HomeController extends BaseController {
 		curl_close($curl);
 
 		return json_decode($result);	
+	}
+
+	private function enter_exit($auth_key, $url)
+	{
+		$curl = curl_init('http://nine.eng.utah.edu/queue/' . $url);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+			'Authorization: BASIC ' . $auth_key
+		));
+
+		$result = curl_exec($curl);
+		curl_close($curl);
+
+		return json_decode($result);		
 	}
 
 }
