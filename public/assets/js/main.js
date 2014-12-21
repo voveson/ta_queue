@@ -117,7 +117,7 @@ $(function() {
 
 	$('#q-students').on('click', '.ta-q-student', function(e) {
 		var id = $(this).attr('id');
-		$('#q-status').html("<h3>" + Android.showDialog("Pick one!") + "</h3>");
+		Android.showDialog("Pick one!");
 	});
 });
 
@@ -125,4 +125,9 @@ $(function() {
 function poll()
 {
 	location.reload();
+}
+
+function ta_choice(i)
+{
+	$('#q-status').html("<h3>" +i+"</h3>");
 }
