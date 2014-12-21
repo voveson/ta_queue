@@ -54,4 +54,22 @@ $(function() {
 			}
 		});
 	});
+
+	$('#sign-out-q').click(function(e) {
+		var url = $(this).attr('data-url');
+		var after = $(this).attr('data-after');
+
+		$.ajax({
+			url:		url,
+			type: 		"POST",
+			success: 	function(data, textStatus, jqXHR) {
+				window.location.replace(after);
+			},
+			error: 		function(jqXHR, textStatus, errorThrown) {
+				var message = $.parseJSON(jqXHR.responseText);
+				alert(textStatus);
+				// TODO:  bootstrap error message
+			}
+		});
+	});
 });

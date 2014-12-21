@@ -26,7 +26,9 @@
 	<button id="exit-q" class="btn btn-md" data-url="{{ URL::route('exit_q', array($auth_key, $s_id)) }}">
 		Exit Queue
 	</button>
-	<button id="sign-out-q" class="btn btn-md">
+	<button id="sign-out-q" class="btn btn-md" 
+			data-url="{{ URL::route('sign-out', array($auth_key, $s_id)) }}"
+			data-after="{{ URL::route('schools') }}">
 		Sign Out
 	</button>
 </div>
