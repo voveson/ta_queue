@@ -190,6 +190,11 @@ $(function() {
 			}
 		});
 	});
+
+	if(empty_q)
+	{
+		$('#q-students').html('<div class="q-message">No students in the queue</div>');
+	}
 });
 
 

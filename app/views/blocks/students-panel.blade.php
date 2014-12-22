@@ -9,6 +9,9 @@
 			</script>
 		@endif
 		@include('blocks/q-student')
+		<script>
+			empty_q = false;
+		</script>
 	@elseif($student->id == $s_id)
 		<script>
 			$(function(){

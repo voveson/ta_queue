@@ -6,6 +6,7 @@
 --}}
 <script>
 var polling;
+var empty_q = true;
 $(function(){
 	polling = setInterval(function(){poll()}, 10000);
 });	
