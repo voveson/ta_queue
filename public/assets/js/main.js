@@ -208,14 +208,16 @@ function ta_action(url_slug, id, message)
 		data: 		{"slug":url_slug, "s_id":id},
 		dataType: 	"json", 
 		success: 	function(data, textStatus, jqXHR) {
+			$("#ta-modal").modal('hide');
 			Android.showToast(message);
 			//alert(message);
 			location.reload();
 		},
 		error: 		function(jqXHR, textStatus, errorThrown) {
+			$("#ta-modal").modal('hide');
 			Android.showToast("An error occurred");
 			//alert('an error occurred');
-			//location.reload();
+			location.reload();
 		}
 	});
 }
