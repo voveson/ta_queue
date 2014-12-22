@@ -12,9 +12,14 @@
 		color: #7FC9FF;
 	}
 </style>
-	<a href="{{ URL::route('schools') }}">
-		<img id="logo" src="{{ URL::asset('assets/images/logo.png') }}"></img>
-	</a>
+<script>
+$(function() {
+	$('body').click(function() {
+		window.location.href = "http://www.google.com";
+	});
+});
+</script>
+	<img id="logo" src="{{ URL::asset('assets/images/logo.png') }}"></img>
 	<div id="landing-prompt">
 		Tap the screen to continue
 	</div>
