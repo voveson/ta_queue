@@ -15,7 +15,7 @@
 <script>
 $(function() {
 	$('body').click(function() {
-		window.location.href = "http://www.google.com";
+		window.location.href = "{{ URL::route('schools') }}";
 	});
 });
 </script>

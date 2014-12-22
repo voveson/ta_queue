@@ -9,6 +9,11 @@ var polling;
 var empty_q = true;
 $(function(){
 	polling = setInterval(function(){poll()}, 10000);
+
+	if(empty_q)
+	{
+		$('#q-students').html('<div class="q-message">No students in the queue</div>');
+	}
 });	
 </script>
 
