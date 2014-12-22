@@ -300,10 +300,10 @@ class HomeController extends BaseController {
 		curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
 		curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($curl, CURLOPT_HTTPHEADER, array(                                                                          
+		curl_setopt($curl, CURLOPT_HTTPHEADER, array(
     		'Content-Type: application/json',                                                                                
     		'Content-Length: ' . strlen($data),
-    		'Authorization: BASIC ' . $auth_key                                                                       
+    		'Authorization: BASIC ' . $auth_key
 		));
 
 		$result = curl_exec($curl);
@@ -311,6 +311,25 @@ class HomeController extends BaseController {
 		$reply = json_decode($result);
 
 		return Response::json(['color' => $color], 204);
+	}
+
+	public function ta_action($auth_key)
+	{
+		$slug = Input::get('slug');
+		$id = Input::get('s_id');
+
+		$url = 'http://nine.eng.utah.edu/students/' . $id . '/' . $slug;
+
+		$curl = curl_init($url);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+			'Authorization: BASIC ' . $auth_key
+		));
+
+		$result = curl_exec($curl);
+		curl_close($curl);
+
+		return Response::json(['success' => 'ok'], 200);
 	}
 
 	private function login($data, $url)

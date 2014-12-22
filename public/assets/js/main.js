@@ -10,7 +10,27 @@ $(function() {
 
 	$('#q-students').on('click', '.ta-q-student', function(e) {
 		var id = $(this).attr('id');
+		var current_student = $('#hidden-data').attr('data-student');
 		var name = $(this).attr('data-name');
+		
+		if(current_student != 'n/a' && id != current_student)
+			return;
+		
+		$('#modal-help').attr('data-sid', id);
+		$('#modal-putback').attr('data-sid', id);
+		$('#modal-remove').attr('data-sid', id);
+
+		if(current_student == 'n/a')
+		{
+			$('#modal-help').show();
+			$('#modal-putback').hide();
+		}
+		else
+		{
+			$('#modal-help').hide();
+			$('#modal-putback').show();
+		}
+
 		$('#modal-student').text(name);
 		clearInterval(polling);
 		$("#ta-modal").modal('show');
@@ -18,6 +38,21 @@ $(function() {
 
 	$('#modal-cancel').click(function(){
 		polling = setInterval(function(){poll()}, 10000);
+	});
+
+	$('#modal-help').click(function() {
+		var id = $(this).attr('data-sid');
+		ta_action("ta_accept", id, "Helping student");
+	});
+
+	$('#modal-putback').click(function() {
+		var id = $(this).attr('data-sid');
+		ta_action("ta_putback", id, "Student was put back");
+	});
+
+	$('#modal-remove').click(function() {
+		var id = $(this).attr('data-sid');
+		ta_action("ta_remove", id, "Student was removed");
 	});
 
 	$('.school_picker').click(function(e) {
@@ -163,7 +198,24 @@ function poll()
 	location.reload();
 }
 
-function ta_choice(i)
+function ta_action(url_slug, id, message)
 {
-	$('#q-status').html("<h3>" +i+"</h3>");
+	var url = $('#hidden-data').attr('data-taurl');
+
+	$.ajax({
+		url:		url,
+		type: 		"POST",
+		data: 		{"slug":url_slug, "s_id":id},
+		dataType: 	"json", 
+		success: 	function(data, textStatus, jqXHR) {
+			Android.showToast(message);
+			//alert(message);
+			location.reload();
+		},
+		error: 		function(jqXHR, textStatus, errorThrown) {
+			Android.showToast("An error occurred");
+			//alert('an error occurred');
+			//location.reload();
+		}
+	});
 }

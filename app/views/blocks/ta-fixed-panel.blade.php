@@ -4,6 +4,11 @@
 		@foreach($queue->tas as $ta)
 			@if($ta->id == $t_id)
 				<li>You{{ $ta->student ? ': helping ' . $ta->student->username : '' }}</li>
+				@if($ta->student)
+					<script>
+						$('#hidden-data').attr('data-student', '{{ $ta->student->id }}');
+					</script>
+				@endif
 			@else
 				<li>{{ $ta->username}}{{ $ta->student ? ': helping ' . $ta->student->username : '' }}</li>
 			@endif

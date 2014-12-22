@@ -10,8 +10,9 @@
       </p>
     </div>
     <div class="modal-buttons">
-      <button class="btn btn-sm" id="create-schedule">Help<br>Student</button>
-      <button class="btn btn-sm" id="create-schedule">Remove<br>Student</button>
+      <button class="btn btn-sm" id="modal-help">Help<br>Student</button>
+      <button class="btn btn-sm" id="modal-putback">Put Back<br>Student</button>
+      <button class="btn btn-sm" id="modal-remove">Remove<br>Student</button>
       <button class="btn btn-sm" id="modal-cancel" data-dismiss="modal">Cancel</button>
     </div>
   </div>

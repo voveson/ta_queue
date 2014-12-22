@@ -15,7 +15,8 @@ $(function(){
 <div id="hidden-data" 
 	 data-username="{{ $username }}"
 	 data-key="{{ $auth_key }}"
-	 data-poll="">
+	 data-student="n/a"
+	 data-taurl="{{ URL::route('ta-action', $auth_key) }}">
 </div>
 <h1>{{ $q_name }}</h1>
 

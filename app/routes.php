@@ -70,3 +70,8 @@ Route::post('/q-state-change/{auth_key}', array(
 	'as'	=>	'q-state-change',
 	'uses'	=>	'HomeController@change_state'
 ));
+
+Route::post('/ta-action/{auth_key}', array(
+	'as'	=>	'ta-action',
+	'uses'	=>	'HomeController@ta_action'
+));
