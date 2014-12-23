@@ -43,6 +43,7 @@ img#logo {
 
 .school-list {
 	margin-top: 40px;
+	overflow: auto;
 }
 
 .school-list a {
@@ -53,15 +54,17 @@ img#logo {
 	box-shadow: 2px 2px 5px #363636, -0.4px -0.4px 0.4px #363636, 0.4px -0.4px 0.4px #363636, -0.4px 0.4px 0.4px #363636;
 }
 
-.q-list {
+#q-list {
 	border: 1px solid black;
 	background-color: white;
 	border-radius: 5px;
 	padding-bottom: 5px;
 	padding-top: 5px;
+	overflow: auto;
+	box-shadow: 1px 2px 4px #363636;
 }
 
-.q-list hr {
+#q-list hr {
 	margin: 0;
 	border-width: 2px;
 	border-color: #5C5C5C;
