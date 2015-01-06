@@ -119,12 +119,14 @@ $(function() {
 			url:		url,
 			type: 		"POST",
 			success: 	function(data, textStatus, jqXHR) {
-				Android.showToast("Signed out");
+				if(Android !== undefined)
+					Android.showToast("Signed out");
 				window.location.replace(after);
 			},
 			error: 		function(jqXHR, textStatus, errorThrown) {
 				var message = $.parseJSON(jqXHR.responseText);
-				Android.showToast("Error: Could not sign out");
+				if(Android !== undefined)
+					Android.showToast("Error: Could not sign out");
 				// TODO:  bootstrap error message
 			}
 		});
@@ -138,12 +140,14 @@ $(function() {
 			url:		url,
 			type: 		"POST",
 			success: 	function(data, textStatus, jqXHR) {
-				Android.showToast("Signed out");
+				if(Android !== undefined)
+					Android.showToast("Signed out");
 				window.location.replace(after);
 			},
 			error: 		function(jqXHR, textStatus, errorThrown) {
 				var message = $.parseJSON(jqXHR.responseText);
-				Android.showToast("Error: Could not sign out");
+				if(Android !== undefined)
+					Android.showToast("Error: Could not sign out");
 				// TODO:  bootstrap error message
 			}
 		});
@@ -210,13 +214,15 @@ function ta_action(url_slug, id, message)
 		dataType: 	"json", 
 		success: 	function(data, textStatus, jqXHR) {
 			$("#ta-modal").modal('hide');
-			Android.showToast(message);
+			if(Android !== undefined)
+				Android.showToast(message);
 			//alert(message);
 			location.reload();
 		},
 		error: 		function(jqXHR, textStatus, errorThrown) {
 			$("#ta-modal").modal('hide');
-			Android.showToast("An error occurred");
+			if(Android !== undefined)
+				Android.showToast("An error occurred");
 			//alert('an error occurred');
 			location.reload();
 		}
