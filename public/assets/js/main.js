@@ -181,7 +181,8 @@ $(function() {
 			success: 	function(data, textStatus, jqXHR) {
 				$('body').css('background-color', color);
 				$('html').css('background-color', color);
-				Android.showToast("Queue state updated");
+				if(Android !== undefined)
+					Android.showToast("Queue state updated");
 			},
 			error: 		function(jqXHR, textStatus, errorThrown) {
 				//var message = $.parseJSON(jqXHR.responseText);
